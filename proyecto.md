@@ -8,6 +8,8 @@
   - [Visión general del curso](#visión-general-del-curso)
   - [¿Cómo aprenden las máquinas?](#cómo-aprenden-las-máquinas)
     - [Alternativas al Machine Learning dentro de la Inteligencia Artificial](#alternativas-al-machine-learning-dentro-de-la-inteligencia-artificial)
+  - [Problemas que podemos resolver con Scikit-learn](#problemas-que-podemos-resolver-con-scikit-learn)
+  - [Las matemáticas que vamos a necesitar](#las-matemáticas-que-vamos-a-necesitar)
 - [2. Iniciar un proyecto con sklearn](#2-iniciar-un-proyecto-con-sklearn)
 - [3. Optimización de features](#3-optimización-de-features)
 - [4. Regresiones robustas](#4-regresiones-robustas)
@@ -76,6 +78,63 @@ Las maquinas aprenden de datos. Desde el punto de vista de los datos, podemos ap
 - **Agentes y Sistemas expertos**
   - Para sistemas cuyas propiedades se puede describir por la interacción de agentes, se utiliza este enfoque para encontrar o describir comportamientos en el colectivo. (Por ejemplo, los mercados financieros compuestos por agentes economicos, vendedores y compradores, etc). La física estadística y los sistemas complejos también se ayudan de este enfoque.
 
+## Problemas que podemos resolver con Scikit-learn
+
+Algunas limitaciones de Scikit-learn
+
+1. No es una herramienta de Computer Vision.
+   - Se necesita complementar con una herramienta adicional tales como [OpenCV](https://opencv.org/) o [TorchVision](https://pytorch.org/docs/stable/torchvision/index.html) que forma parte del proyecto de Pytorch.
+2. No se puede correr en GPUs.
+3. No es una herramienta de estadística avanzada.
+4. No es muy flexible en temas de Deep Learning.
+
+Qué problemas podemos abordar con Scikit-learn?
+
+- **Clasificaciones**: Necesitamos etiquetar nuestros datos para que encajen en alguna de ciertas categorías previamente definidas.
+  - Ejemplos:
+    - ¿Es cáncer o no es cáncer?
+    - ¿La imagen pertenece a un Ave, Perro o Gato?
+    - ¿A qué segmento de clientes pertenece determinado usuario?
+
+- **Regresión**: Cuando necesitamos modelar el comportamiento de una variable continua, dadas otras variables correlaciones
+  - Ejemplos:
+    - Predecir el precio del dólar para el mes siguiente.
+    - El total de calorías de una comida dados sus ingredientes.
+    - La ubicación más probable de determinado objeto dentro de una imagen.
+
+- **Clustering**: Queremos descubrir subconjuntos de datos similares dentro del dataset. Queremos encontrar valores que se salen del comportamiento global.
+  - Ejemplo:
+    - Identificar productos similares para un sistema de recomendación.
+    - Descubrir el sitio ideal para ubicar paradas de buses según la densidad poblacional.
+    - Segmentar imágenes según patrones de colores y geometrías.
+
+## Las matemáticas que vamos a necesitar
+
+La cortina de fondo: Varias técnicas que usamos para que los computadores aprendan están inspiradas en el mundo natural.
+
+- Redes neuronales artificiales: Están inspiradas en el cerebro humano.
+- Aprendizaje por refuerzo: Está inspirado en las teorías de la psicología conductual.
+- Algoritmos evolutivos: Los teorías de Charles Darwin.
+
+Temas matemáticos generales a repasar:
+
+- Funciones y trigonométrica.
+- Algebra lineal. [Repositorio complemento al curso -- Álgebra Lineal Aplicada para Machine Learning](https://github.com/francomanca93/algebra-aplicada-python)
+- Optimización de funciones.
+- Calculo diferencial.
+
+Temas de probabilidad y estadistica a repasar:
+
+- Probabilidad básica.
+- Combinaciones y permutaciones.
+- Variables aleatorias y distribuciones.
+- Teorema de Bayes.
+- Pruebas estadísticas.
+
+> - La conclusión es que si no tienes buenas bases de matemáticas, es muy difícil tener un “entendimiento real” de machine learning e inteligencia artificial. Serán como “cajas negras”.
+>
+> - La estrategia del curso será de desarrollo de software y ciencia de la computación.
+> - Scikit Learn nos ayudará a cubrir algunos vacios conceptuales de una manera que beneficie a nuestro modelo.
 
 # 2. Iniciar un proyecto con sklearn
 
