@@ -16,6 +16,7 @@
   - [Datasets que usaremos en el curso](#datasets-que-usaremos-en-el-curso)
 - [3. Optimización de features](#3-optimización-de-features)
   - [¿Cómo afectan nuestros features a los modelos de Machine Learning?](#cómo-afectan-nuestros-features-a-los-modelos-de-machine-learning)
+  - [Introducción al algoritmo PCA (Principal Component Analysis)](#introducción-al-algoritmo-pca-principal-component-analysis)
 - [4. Regresiones robustas](#4-regresiones-robustas)
 - [5. Métodos de ensamble aplicados a clasificación](#5-métodos-de-ensamble-aplicados-a-clasificación)
 - [6. Clustering](#6-clustering)
@@ -238,6 +239,41 @@ Algo que debemos que recordar es que nuestro modelo de ML puede caer en uno de 2
 - Aplicar técnicas reducción de la dimensionalidad. Utilizaremos el algoritmo de PCA.
 - Aplicar la técnica de la regulación, que consiste en penalizar aquellos features que no le estén aportando o que le estén restando información a nuestro modelo.
 - Balanceo: Se utilizará Oversampling y Undersampling en problemas de rendimiento donde tengamos un conjunto de datos que está desbalanceado, por ejemplo en un problema de clasificación donde tenemos muchos ejemplos de una categoría y muy pocos de otra.
+
+## Introducción al algoritmo PCA (Principal Component Analysis)
+
+[Analisis de componentes principales (PCA) - Explicancion intruitiva en youtube](https://www.youtube.com/watch?v=AniiwysJ-2Y&t)
+
+**¿Por qué usaríamos este algoritmo?**
+
+- Porque en machine learning es normal encontrarnos con problemas donde tengamos una enorme cantidad de features en donde hay relaciones complejas entre ellos y con la variable que queremos predecir.
+
+**¿Donde se puede utilizar un algoritmo PCA?**
+
+- Nuestro dataset tiene un número alto de features y no todos sean significativos.
+- Hay una alta correlación entre los features.
+- Cuando hay overfiting.
+- Cuando implica un alto coste computacional.
+
+**¿En que consiste el algoritmo PCA?**
+
+Básicamente en reducir la complejidad del problema:
+
+1. Seleccionando solamente las variables relevantes.
+2. Combinándolas en nuevas variables que mantengan la información más importante (varianza de los features).
+
+![reduccion-dimensionalidad](https://imgur.com/s9Q0diS.png)
+
+**¿Cuales son pasos para llevar a cabo el algoritmo PCA?**
+
+1. Calculamos la matriz de covarianza para expresar las relaciones entre nuestro features.
+2. Hallamos los vectores propios y valores propios de esta matriz, para medir la fuerza y variabilidad de estas relaciones.
+3. Ordenamos y escogemos los vectores propios con mayor variabilidad, esto es, aportan más información.
+
+**¿Qué hacer si tenemos una PC de bajos recursos?**
+
+- Si tenemos un dataset demasiado exigente, podemos usar una variación como IPCA.
+- Si nuestros datos no tienen una estructura separable linealmente, y encontramos un KERNEL que pueda mapearlos podemos usar KPCA.
 
 # 4. Regresiones robustas
 
