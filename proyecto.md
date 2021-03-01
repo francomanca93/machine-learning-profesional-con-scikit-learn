@@ -13,6 +13,7 @@
 - [2. Iniciar un proyecto con sklearn](#2-iniciar-un-proyecto-con-sklearn)
   - [Configuración de nuestro entorno Python](#configuración-de-nuestro-entorno-python)
   - [Instalación de librerías en Python](#instalación-de-librerías-en-python)
+  - [Datasets que usaremos en el curso](#datasets-que-usaremos-en-el-curso)
 - [3. Optimización de features](#3-optimización-de-features)
 - [4. Regresiones robustas](#4-regresiones-robustas)
 - [5. Métodos de ensamble aplicados a clasificación](#5-métodos-de-ensamble-aplicados-a-clasificación)
@@ -180,6 +181,22 @@ pandas==0.25.3
 matplotlib==3.1.2
 scikit-learn==0.22
 ```
+
+## Datasets que usaremos en el curso
+
+> [Datasets e informacion sobre ellos en el repo](datasets)
+
+- [World Happiness Report](https://www.kaggle.com/unsdsn/world-happiness): Es un dataset que desde el 2012 recolecta variables sobre diferentes países y las relaciona con el nivel de felicidad de sus habitantes.
+
+> **Nota: Este data set lo vamos a utilizar para temas de regresiones**
+
+- [The Ultimate Halloween Candy Power Ranking](https://www.kaggle.com/fivethirtyeight/the-ultimate-halloween-candy-power-ranking): Es un estudio online de 269 mil votos de más de 8371 IPs deferentes. Para 85 tipos de dulces diferentes se evaluaron tanto características del dulce como la opinión y satisfacción para generar comparaciones. 
+
+> **Nota: Este dataset lo vamos a utilizar para temas de clustering**
+
+- [Heart disease prediction](https://www.kaggle.com/c/SAheart): Es un subconjunto de variables de un estudio que realizado en 1988 en diferentes regiones del planeta para predecir el riesgo a sufrir una enfermedad relacionada con el corazón. 
+
+> **Nota: Este data set lo vamos a utilizar para temas de clasificación.**
 
 # 3. Optimización de features
 
