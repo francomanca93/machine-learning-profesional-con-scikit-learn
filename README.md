@@ -22,4 +22,4 @@ Implementación de regresión robusta
 
 Usando el dataset del índice de felicidad aprenderemos a limpiar y transformar datos atípicos para procesarlos por medio de un regresión robusta.
 
-> [Apuntes del curso](apuntes.md)
+> [Apuntes del curso](proyecto.md)
