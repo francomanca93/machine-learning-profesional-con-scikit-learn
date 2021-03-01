@@ -11,6 +11,8 @@
   - [Problemas que podemos resolver con Scikit-learn](#problemas-que-podemos-resolver-con-scikit-learn)
   - [Las matemáticas que vamos a necesitar](#las-matemáticas-que-vamos-a-necesitar)
 - [2. Iniciar un proyecto con sklearn](#2-iniciar-un-proyecto-con-sklearn)
+  - [Configuración de nuestro entorno Python](#configuración-de-nuestro-entorno-python)
+  - [Instalación de librerías en Python](#instalación-de-librerías-en-python)
 - [3. Optimización de features](#3-optimización-de-features)
 - [4. Regresiones robustas](#4-regresiones-robustas)
 - [5. Métodos de ensamble aplicados a clasificación](#5-métodos-de-ensamble-aplicados-a-clasificación)
@@ -137,6 +139,47 @@ Temas de probabilidad y estadistica a repasar:
 > - Scikit Learn nos ayudará a cubrir algunos vacios conceptuales de una manera que beneficie a nuestro modelo.
 
 # 2. Iniciar un proyecto con sklearn
+
+## Configuración de nuestro entorno Python
+
+Los entornos virtuales nos permiten isolar multiples dependencias para el desarrollo de proyecto, puede pasar por ejemplo cuando trabajas con diferentes versiones de python o de django.
+
+Python 3 trae la creación y manejo de entornos virtuales como parte del modulo central.
+
+Entorno virtual con Python
+
+Para crear un entorno virtual utilizas:
+
+`python3 -m venv .NOMBRE-ENTORNO`
+
+Nota:.NOMBRE-ENTORNO es el nombre de del ambiente
+
+Para activarlo:
+
+`source -m ./.env/bin/activate`
+
+Si queremos desactivarlo:
+
+`deactivate`
+
+Si deseamos ver las librerías instaladas en el ambiente:
+
+`pip freeze`
+
+## Instalación de librerías en Python
+
+Librerias y sus versiones con las que trabajaremos.
+
+Si las copiamos en un archivo `requirements.txt` y luego con el comando `pip install -r requirements.txt` podremos instalarlas a todas.
+
+```
+numpy==1.17.4
+scipy==1.3.3
+joblib==0.14.0
+pandas==0.25.3
+matplotlib==3.1.2
+scikit-learn==0.22
+```
 
 # 3. Optimización de features
 
