@@ -17,6 +17,7 @@
 - [3. Optimización de features](#3-optimización-de-features)
   - [¿Cómo afectan nuestros features a los modelos de Machine Learning?](#cómo-afectan-nuestros-features-a-los-modelos-de-machine-learning)
   - [Introducción al algoritmo PCA (Principal Component Analysis)](#introducción-al-algoritmo-pca-principal-component-analysis)
+  - [Preparación de datos para PCA e IPCA](#preparación-de-datos-para-pca-e-ipca)
 - [4. Regresiones robustas](#4-regresiones-robustas)
 - [5. Métodos de ensamble aplicados a clasificación](#5-métodos-de-ensamble-aplicados-a-clasificación)
 - [6. Clustering](#6-clustering)
@@ -274,6 +275,30 @@ Básicamente en reducir la complejidad del problema:
 
 - Si tenemos un dataset demasiado exigente, podemos usar una variación como IPCA.
 - Si nuestros datos no tienen una estructura separable linealmente, y encontramos un KERNEL que pueda mapearlos podemos usar KPCA.
+
+## Preparación de datos para PCA e IPCA
+
+[Script preparando los datos para PCA e IPCA](pca.py)
+
+- Importamos las librerias a utilizar
+- Guardamos los feature y el target
+- Normalizamos los datos.
+
+```txt
+# La estandarizacion que hace sklearn con StandardScaler es:
+z = x-u / s
+
+x = valor
+u = media
+s = desviacion estandar
+```
+
+- Partimos el conjunto de entrenamiento.
+  - `X` representa los features. Normalmente es una matriz, por eso la mayúscula.
+  - `y` representa el target. Siempre es un vector, nunca una matriz, por eso la minúscula.
+
+- Para añadir replicabilidad usamos el random state
+  - `random_state` es para dejar estáticos los valores aleatorios que te genera, de forma que al volverlo a correr siga trabajando con esos valores aleatorios y no te genere nuevos valores aleatorios.
 
 # 4. Regresiones robustas
 
