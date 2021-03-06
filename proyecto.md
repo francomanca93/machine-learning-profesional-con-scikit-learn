@@ -18,6 +18,7 @@
   - [¿Cómo afectan nuestros features a los modelos de Machine Learning?](#cómo-afectan-nuestros-features-a-los-modelos-de-machine-learning)
   - [Introducción al algoritmo PCA (Principal Component Analysis)](#introducción-al-algoritmo-pca-principal-component-analysis)
   - [Preparación de datos para PCA e IPCA](#preparación-de-datos-para-pca-e-ipca)
+  - [Implementación del algoritmo PCA e IPCA](#implementación-del-algoritmo-pca-e-ipca)
 - [4. Regresiones robustas](#4-regresiones-robustas)
 - [5. Métodos de ensamble aplicados a clasificación](#5-métodos-de-ensamble-aplicados-a-clasificación)
 - [6. Clustering](#6-clustering)
@@ -299,6 +300,32 @@ s = desviacion estandar
 
 - Para añadir replicabilidad usamos el random state
   - `random_state` es para dejar estáticos los valores aleatorios que te genera, de forma que al volverlo a correr siga trabajando con esos valores aleatorios y no te genere nuevos valores aleatorios.
+
+## Implementación del algoritmo PCA e IPCA
+
+Estamos trabajando bajo el dataset de pacientes con riesgo a padecer una enfermedad cardiaca. Con este dataset pretendemos que utilizando ciertas variables de los pacientes, por ejemplo su edad, su sexo, su presión sanguínea y un indice de dolor que pueden sentir al realizar ejercicio físico.
+
+Vamos a intentar hacer una clasificación binaria, entre si el paciente tiene una enfermedad cardiaca o no la tiene, el objetivo es hacer una clasificación básica, pero que nos dé una información relevante, maximizando la información de todos estos features.
+
+En esta sección lo que hicimos fue:
+
+- Configuracion de la regresión logística
+- PCA
+  1. Llamamos y configuramos nuestro algoritmo PCA. El número de componentes es opcional. Si no le pasamos el número de componentes lo asignará de esta forma: n_components = min(n_muestras, n_features)
+  2. Entrenando algoritmo de PCA
+  3. Configuramos los datos de entrenamiento con PCA
+  4. Entrenamos la regresion logistica con datos del PCA
+  5. Calculamos nuestra exactitud de nuestra predicción
+- IPCA
+  - Haremos una comparación con incremental PCA, haremos lo mismo para el IPCA. El parámetro batch se usa para crear pequeños bloques, de esta forma podemos ir entrenandolos poco a poco y combinarlos en el resultado final
+  - Mismos pasos a partir del 2 que para PCA.
+
+[Comparación de PCA vs IPCA](pca-vs-ipca.py)
+![pca-vs-ipca](https://imgur.com/3pNvf3I.png)
+
+> Conclusión
+>
+> El rendimiento de los dos algoritmos es casi exactamente el mismo, pero hay que considerar que nuestro dataset tenia 13 fetures originalmente para intentar predecir una clasificación binaria y utilizando PCA, solo tuvimos que utilizar 3 features artificiales que fueron los que nos   devolvió PCA para llegar a un resultado coste computacional y estamos utilizando información que es realmente relevante para nuestro modelo.
 
 # 4. Regresiones robustas
 
