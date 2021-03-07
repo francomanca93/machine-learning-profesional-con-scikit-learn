@@ -19,6 +19,7 @@
   - [Introducción al algoritmo PCA (Principal Component Analysis)](#introducción-al-algoritmo-pca-principal-component-analysis)
   - [Preparación de datos para PCA e IPCA](#preparación-de-datos-para-pca-e-ipca)
   - [Implementación del algoritmo PCA e IPCA](#implementación-del-algoritmo-pca-e-ipca)
+  - [Kernels y KPCA](#kernels-y-kpca)
 - [4. Regresiones robustas](#4-regresiones-robustas)
 - [5. Métodos de ensamble aplicados a clasificación](#5-métodos-de-ensamble-aplicados-a-clasificación)
 - [6. Clustering](#6-clustering)
@@ -326,6 +327,33 @@ En esta sección lo que hicimos fue:
 > Conclusión
 >
 > El rendimiento de los dos algoritmos es casi exactamente el mismo, pero hay que considerar que nuestro dataset tenia 13 fetures originalmente para intentar predecir una clasificación binaria y utilizando PCA, solo tuvimos que utilizar 3 features artificiales que fueron los que nos   devolvió PCA para llegar a un resultado coste computacional y estamos utilizando información que es realmente relevante para nuestro modelo.
+
+## Kernels y KPCA
+
+[Script aplicando KPCA](kpca.py)
+
+Ya conocemos los algoritmos PCA e IPCA, ¿Que otras alternativas tenemos?
+
+Una alternativa son los Kernels. Un **Kernel** es una función matemática que toma mediciones que se comportan de manera no lineal y las proyecta en un espacio dimensional más grande en donde sen linealmente separables.
+
+**Y, ¿esto para que puede servir?**
+
+Sirve para casos donde los datos no son linealmente separables. El la primera imagen no es posible separarlos con una linea y en la imagen 2 si lo podemos hacer mediante Kernels. Lo que hace la función de Kernels es proyectar los puntos en otra dimensión y así volver los datos linealmente separables.
+
+![kernels](https://imgur.com/T3OOW2u.png)
+
+**¿Que tipo de funciones para Kernels nos podemos encontrar?**
+
+![](https://imgur.com/hGfKF92.png)
+
+**Ejemplos de funciones de Kernels en datasets aplicados a un clasificador:**
+
+![](https://imgur.com/475H5GC.png)
+
+> Conclusión:
+>
+> El aumento de dimensiones puede ayudar a resolver problemas de clasificación.
+
 
 # 4. Regresiones robustas
 
