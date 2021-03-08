@@ -20,6 +20,8 @@
   - [Preparación de datos para PCA e IPCA](#preparación-de-datos-para-pca-e-ipca)
   - [Implementación del algoritmo PCA e IPCA](#implementación-del-algoritmo-pca-e-ipca)
   - [Kernels y KPCA](#kernels-y-kpca)
+  - [Regularización](#regularización)
+    - [Tipos de regularización](#tipos-de-regularización)
 - [4. Regresiones robustas](#4-regresiones-robustas)
 - [5. Métodos de ensamble aplicados a clasificación](#5-métodos-de-ensamble-aplicados-a-clasificación)
 - [6. Clustering](#6-clustering)
@@ -354,6 +356,62 @@ Sirve para casos donde los datos no son linealmente separables. El la primera im
 >
 > El aumento de dimensiones puede ayudar a resolver problemas de clasificación.
 
+## Regularización
+
+La regularización es una técnica que consiste en disminuir la complejidad de nuestro modelo a través de una penalización aplicada a sus variables más irrelevantes.
+
+**¿Como hacemos lo anterior?**
+
+Introducimos un mayor Sesgo sobre las variables y disminuimos la Varianza. Con esto logramos mejorar la generalización de la predicción de nuestro modelo con los datos y lograr evitar o reducir el Overfitting.
+
+![](https://imgur.com/FJyWxar.png)
+
+Podemos apreciar en la gráfica 1, hay un sobre ajuste, ya que la linea roja se acopla muy bien para los datos de prueba, pero no para los datos de entrenamiento. La linea roja en los datos de prueba da una mala generalización, una mala aproximación.
+
+Pero para poder aplicar regularización necesitamos un termino adicional el concepto de **perdida** **(loss)**. El concepto de perdida nos dice que tan lejos están nuestras predicciones de los datos reales, esto quiere decir que entre menor sea la perdida mejor será nuestro modelo.
+
+**Perdida en entrenamiento y en validación**
+
+![](https://imgur.com/vbUJg5r.png)
+
+Podemos ver en la gráfica que la perdida tiende a disminuir, porque en algún momento van a ser vistos, van a ser operados y el modelo va a tender a ajustarse a esos datos de entrenamiento, pero lo que tenemos que mirar es cómo se va a comportar en el mundo real.
+
+En el conjunto de validación o pruebas es muy normal que nuestra perdida comience a disminuir porque hay una buena generalización, pero llega un punto donde nuevos valores comienza a introducirse donde esa perdida vuelve a comenzar a subir ese es el punto donde en general se considera que comienza a haber sobreajuste. Es la perdida la medida que vamos a utilizar para poder aplicar la regularización.
+
+> Conclusiones:
+>
+> - La regularización aumenta el sesgo y disminuye la varianza con el objetivo de mejorar la generalización del modelo.
+> .
+> - PCA: Combinábamos variables creando así variables artificiales.
+> - Regularización: Se penaliza a las variables que aportan menos información.
+> - Ambas buscan disminuir la complejidad del modelo.
+
+### Tipos de regularización
+
+[Ridge vs Lasso Regression | StatQuest with Josh Starmer | Youtube](https://www.youtube.com/watch?v=Xm2C_gTAl8c)
+
+- **L1 Lasso**: Para reducir la complejidad a través de eliminación de features que no aportan demasiado al modelo.
+  - Penaliza a los features que aporta poca información volviéndolos cero, eliminado el ruido que producen en el modelo.
+
+![lasso](https://imgur.com/k5g7MPc.png)
+
+![lasso-pic](https://imgur.com/IzzR5mc.png)
+
+- **L2 Ridge**: Reducir la complejidad disminuyendo el impacto de ciertos features a nuestro modelo.
+  - Penaliza los features poco relevantes, pero no los vuelve cero. Solamente limita la información que aportan a nuestro modelo.
+
+![ridge](https://imgur.com/WcrxFsJ.png)
+
+![ridge-pic](https://imgur.com/kn0gywb.png)
+
+- **ElasticNet**: Es una combinación de las dos anteriores.
+
+> Conclusión
+> Lasso vs Ridge.
+>
+> 1. No hay un campeón definitivo para todos los problemas.
+> 2. Si hay pocos features que se relacionen directamente con la variable a predecir: **Probar Lasso**.
+> 3. Si hay varios features relacionados con la variable a predecir: **Probar Ridge**.
 
 # 4. Regresiones robustas
 
