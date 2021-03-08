@@ -22,6 +22,8 @@
   - [Kernels y KPCA](#kernels-y-kpca)
   - [Regularización](#regularización)
     - [Tipos de regularización](#tipos-de-regularización)
+  - [Implementación de Lasso y Ridge](#implementación-de-lasso-y-ridge)
+  - [Explicación resultado de la implementación](#explicación-resultado-de-la-implementación)
 - [4. Regresiones robustas](#4-regresiones-robustas)
 - [5. Métodos de ensamble aplicados a clasificación](#5-métodos-de-ensamble-aplicados-a-clasificación)
 - [6. Clustering](#6-clustering)
@@ -412,6 +414,56 @@ En el conjunto de validación o pruebas es muy normal que nuestra perdida comien
 > 1. No hay un campeón definitivo para todos los problemas.
 > 2. Si hay pocos features que se relacionen directamente con la variable a predecir: **Probar Lasso**.
 > 3. Si hay varios features relacionados con la variable a predecir: **Probar Ridge**.
+
+## Implementación de Lasso y Ridge
+
+Implementaremos las tecnicas de regularizacion. Para esto utilizaremos dos regresores que vienen por defecto en Scikit Learn y que de una manera automatizada nos integra un modelo lineal con su respectiva regularización.
+
+Utilizaremos el dataset del reporte de la felicidad mundial. Dataset que mide varios factores en diferentes paises, tales como, el indice de corrupción, nivel que nos indica que tan fuerte son las relaciones de familia, el desarrollo per capita económico y nos intenta dar una variable continua para medir la felicidad del pais en cuestión.
+
+[Script aplicando regularizacion](regularization.py)
+
+1. Vamos a elegir los features que vamos a usar
+2. Definimos nuestro objetivo, que sera nuestro data set, la columna score.
+3. Definimos nuestros regresores, los seleccionamos, configuramos y entrenamos. Vamos calcular la prediccion que nos arroja con la funcion predict y luego le lanzaremos el test.
+   1. Linear Regression
+   2. Lasso
+   3. Ridge
+
+4. Loss Function - Funciones de perdida para cada modelo.
+   - Calculamos la perdida para cada uno de los modelos que entrenamos
+
+## Explicación resultado de la implementación
+
+```shell
+Linear loss: 0.0000000569
+Lasso Loss: 0.5168427944
+Ridge loss: 0.0066128808
+```
+
+Menor perdida es mejor, esto quiere decir que hubo menos equivocacion entre los valores esperados y los valores predichos.
+
+```shell
+================================
+Coef LASSO
+[1.00763927 0.         0.         0.         0.         0.         0.32076227]
+================================
+Coef RIDGE
+[[1.05791328 0.964398   0.87157588 0.87910868 0.61100802 0.77385103 0.96904502]]
+================================
+```
+Los coeficientes obtenidos en Lasso y Ridge es un arregla que tiene el mismo tamaño que las columnas que utilizamos, nuestros features.
+
+```py
+X = dataset[['gdp', 'family', 'lifexp', 'freedom', 'corruption', 'generosity', 'dystopia']]
+```
+
+Los numeros mas grandes dentro del arreglo, significa que la columna en si esta teniendo mas peso en el modelo que estamos entrenando.
+
+- **Lasso**
+  - Los valores que Lasso haya hecho 0, nos indica que el algoritmo no te dio la atencion necesaria o no los considero importante. Analizar porque hizo eso nuestro algoritmo Lasso ya esta tarea nuestra como Data Scientist.
+- **Ridge**
+  - En Ridge ninguno de los coeficientes han sido 0, sino que fueron disminuidos, esto se hace precisamente la regresión Ridge
 
 # 4. Regresiones robustas
 
