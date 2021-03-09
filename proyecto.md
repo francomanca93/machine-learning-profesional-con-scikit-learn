@@ -25,6 +25,11 @@
   - [Implementación de Lasso y Ridge](#implementación-de-lasso-y-ridge)
   - [Explicación resultado de la implementación](#explicación-resultado-de-la-implementación)
 - [4. Regresiones robustas](#4-regresiones-robustas)
+  - [Valores atípicos](#valores-atípicos)
+    - [¿Por qué son problemáticos?](#por-qué-son-problemáticos)
+    - [¿Cómo identificarlos?](#cómo-identificarlos)
+      - [Analíticamente, con métodos estadísticos](#analíticamente-con-métodos-estadísticos)
+      - [Graficamente](#graficamente)
 - [5. Métodos de ensamble aplicados a clasificación](#5-métodos-de-ensamble-aplicados-a-clasificación)
 - [6. Clustering](#6-clustering)
 - [7. Optimización paramétrica](#7-optimización-paramétrica)
@@ -466,6 +471,37 @@ Los numeros mas grandes dentro del arreglo, significa que la columna en si esta 
   - En Ridge ninguno de los coeficientes han sido 0, sino que fueron disminuidos, esto se hace precisamente la regresión Ridge
 
 # 4. Regresiones robustas
+
+## Valores atípicos
+
+- Un valor atípico es cualquier medición que se encuentre por fuera del comportamiento general de una muestra de datos.
+- Pueden indicar variabilidad, errores de medición o novedades.
+
+### ¿Por qué son problemáticos?
+
+1. Pueden generar sesgos importantes en los modelos de ML.
+2. A veces contienen información relevante sobre la naturaleza de los datos.
+3. Detección temprana de fallos.
+
+### ¿Cómo identificarlos?
+
+#### Analíticamente, con métodos estadísticos
+
+- **Z - Score**: Mide la distancia (en desviaciones estándar) de un punto dado a la media.
+- Técnicas de clustering como **DBSCAN**. [Clusting with Scikit Learn - More Info](https://dashee87.github.io/data%20science/general/Clustering-with-Scikit-with-GIFs/)
+  - Consiste en considerar a zonas muy densas como clusters, mientras que los puntos que carecen de **‘vecinos’** no pertenecen a ningún conjunto y por lo tanto se clasifican como ruido (o **outliers**).
+  - Una ventaja de está técnica es que no se requiere que se especifique el número de clusters (como en K-means, por ejemplo), en cambio se debe especificar un número mínimo de datos que constituye un cluster y un parámetro epsilon que está relacionado con el espacio entre vecinos.
+
+  ![dbscan](https://imgur.com/cpDAOhS.gif)
+
+- Si `q< Q1-1.5IQR` ó `q > Q3+1.5IQR`. [Articulo en medium con explicación ampliada](https://towardsdatascience.com/why-1-5-in-iqr-method-of-outlier-detection-5d07fdc82097)
+
+#### Graficamente
+
+- Con Boxplot.
+  - El grafico de caja de una buena forma para detectar los valores atípicos en un set de datos, a su vez también es aconsejable (dependiendo del caso) eliminarlos para que nuestro análisis sea lo más confiable posible.
+
+    ![boxplot](https://imgur.com/oq5CiJ9.png)
 
 # 5. Métodos de ensamble aplicados a clasificación
 
