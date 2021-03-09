@@ -30,6 +30,8 @@
     - [¿Cómo identificarlos?](#cómo-identificarlos)
       - [Analíticamente, con métodos estadísticos](#analíticamente-con-métodos-estadísticos)
       - [Graficamente](#graficamente)
+  - [Regresiones Robustas en Scikit-learn](#regresiones-robustas-en-scikit-learn)
+    - [Tipos | Más utilizadas](#tipos--más-utilizadas)
 - [5. Métodos de ensamble aplicados a clasificación](#5-métodos-de-ensamble-aplicados-a-clasificación)
 - [6. Clustering](#6-clustering)
 - [7. Optimización paramétrica](#7-optimización-paramétrica)
@@ -502,6 +504,36 @@ Los numeros mas grandes dentro del arreglo, significa que la columna en si esta 
   - El grafico de caja de una buena forma para detectar los valores atípicos en un set de datos, a su vez también es aconsejable (dependiendo del caso) eliminarlos para que nuestro análisis sea lo más confiable posible.
 
     ![boxplot](https://imgur.com/oq5CiJ9.png)
+
+## Regresiones Robustas en Scikit-learn
+
+¿Como podemos lidiar con valores atípicos?
+
+- Se pueden tratar desde la etapa de pre procesamiento intentando eliminarlo y transformarlo de alguna manera.
+- Hay veces que la unica menera de lidiar con ellos es cuando estamos aplicando nuestro modelo de Machine Learning.
+  - Scikit Learn nos ofrece un meta estimador que nos permite configurar diferentes estimadores para lidiar con los valores atipicos, de una manera facil de implementar. A estas técnicas se las conoce como **Regresiones Robustas**
+
+### Tipos | Más utilizadas
+
+- **RANSAC**:
+  - Selecciona una muestra aleatoria de los datos asumiendo que esa muestra se encuentra dentro de los valores inliners, con estos datos se entrena el modelo y se compara su comportamiento con respecto a los otros datos.
+  - El procedimiento anterior se repite tantas veces como se indique y al finalizar el algoritmo escoge la combinación de datos que tenga la mejor cantidad de inliners, donde los valores atípicos puedan ser discriminados de forma efectiva.
+  - [More info about RANSAC algorithm in Wikipedia](https://es.wikipedia.org/wiki/RANSAC)
+  - [sklearn.linear_model.RANSACRegressor](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.RANSACRegressor.html?highlight=ransac#sklearn.linear_model.RANSACRegressor)
+  - [Robust linear model estimation using RANSAC](https://scikit-learn.org/stable/auto_examples/linear_model/plot_ransac.html)
+
+![ransac](https://imgur.com/y2GudLP.png)
+
+![ransac2](https://imgur.com/U0gcEja.png)
+
+- **Huber Reggresor**:
+  - No elimina los valores atípicos sino que los penaliza.
+  - Realiza el entrenamiento y si el error absoluto de la perdida alcanza cierto umbral (epsilon) los datos son tratados como atípicos.
+  - El valor por defecto de epsilon es 1.35 ya que se ha demostrado que logra un 95% de eficiencia estadística.
+  - [Hube Regressor in Scikit Learn](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.HuberRegressor.html).
+  - [HuberRegressor vs Ridge on dataset with strong outliers](https://scikit-learn.org/stable/auto_examples/linear_model/plot_huber_vs_ridge.html#sphx-glr-auto-examples-linear-model-plot-huber-vs-ridge-py)
+
+![huber](https://imgur.com/yqw9c3j.png)
 
 # 5. Métodos de ensamble aplicados a clasificación
 
