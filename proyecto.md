@@ -32,6 +32,8 @@
       - [Graficamente](#graficamente)
   - [Regresiones Robustas en Scikit-learn](#regresiones-robustas-en-scikit-learn)
     - [Tipos | Más utilizadas](#tipos--más-utilizadas)
+  - [Preparación de datos para la regresión robusta](#preparación-de-datos-para-la-regresión-robusta)
+  - [Implementación regresión robusta](#implementación-regresión-robusta)
 - [5. Métodos de ensamble aplicados a clasificación](#5-métodos-de-ensamble-aplicados-a-clasificación)
 - [6. Clustering](#6-clustering)
 - [7. Optimización paramétrica](#7-optimización-paramétrica)
@@ -534,6 +536,50 @@ Los numeros mas grandes dentro del arreglo, significa que la columna en si esta 
   - [HuberRegressor vs Ridge on dataset with strong outliers](https://scikit-learn.org/stable/auto_examples/linear_model/plot_huber_vs_ridge.html#sphx-glr-auto-examples-linear-model-plot-huber-vs-ridge-py)
 
 ![huber](https://imgur.com/yqw9c3j.png)
+
+## Preparación de datos para la regresión robusta
+
+Lo que haremos es corromper los datos del dataset de felicidad agregando valores atipicos (**outliers**) y poder experimentar y aplicar nuestras regresiones robustas.
+
+Una manera mas profesional de trabajar con modelo y estimadores, al trabajar con mas de uno es utilizar diccionarios. Esto nos permite hacer que nuestro codigo sea mas efectivo, sin repetir tanto código y poder hacer pruebas mas elaboradas. Lo que veniamos haciendo es prepararlos, entrenarlos y medirlos uno por uno, pero Scikit Learn nos permite hacer todo esto de una manera mas efectiva y sencilla.
+
+```py
+
+estimadores = {
+    'SVR': SVR(gamma='auto', C=1.0, epsilon=0.1),
+    'RANSAC': RANSACRegressor(), # Meta estimador
+    'HUBER': HuberRegressor(epsilon=1.35)
+}
+
+```
+
+- **SVM (Suppot Vector Machine)**: Con el parámetro C podemos controlar la penalización por error en la clasificación. Si C tiene valores amplios entonces, se penaliza de forma más estricta los errores, mientras que si escogemos un C pequeño seremos menos estrictos con los errores. En otras palabras, si C es pequeño aumenta el sesgo y disminuye la varianza del modelo.
+- **RANSAC**: Al ser un meta estimador, podemos pasarle como parámetros diferentes estimadores, para nuestro caso vamos a trabajar de una forma genenérica.
+- **HUBER**: El valor de epsilon es 1.35. Utilizamos este valor ya que se ha demostrado que logra un 95% de eficiencia estadística.
+
+## Implementación regresión robusta
+
+[Script implementando regresiones robustas](robust.py)
+
+Gracias a los diccionarios, loops y scikit learn podemos operar de forma mas ordenada y secuencial.
+Con scikit learn, todos los estimadores tienen la misma interfaz de funciones. En general gracias a esto no hace falta implemntar funciones especificadas para cada uno de los algoritmos.
+
+Los que hacemos en nuestro loop a traves del diccionario de los modelos es:
+
+1. Entrenar
+2. Predecir
+3. Medir
+4. Graficar valores
+
+Obtenemos lo siguiente:
+
+![svm](https://imgur.com/eHZAtfw.png)
+
+![ransac](https://imgur.com/GM3KrFo.png)
+
+![huber](https://imgur.com/ujJtzfo.png)
+
+> [Robust Regression for Machine Learning in Python - More Info - Excellent article](https://machinelearningmastery.com/robust-regression-for-machine-learning-in-python/)
 
 # 5. Métodos de ensamble aplicados a clasificación
 
