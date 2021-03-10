@@ -38,6 +38,8 @@
   - [¿Qué son los métodos de ensamble?](#qué-son-los-métodos-de-ensamble)
     - [Bagging](#bagging)
     - [Boosting](#boosting)
+  - [Preparación de datos para implementar métodos de ensamble](#preparación-de-datos-para-implementar-métodos-de-ensamble)
+  - [Implementación de Bagging](#implementación-de-bagging)
 - [6. Clustering](#6-clustering)
 - [7. Optimización paramétrica](#7-optimización-paramétrica)
 - [8. Salida a producción](#8-salida-a-producción)
@@ -637,6 +639,57 @@ Resumen con imágenes:
 
 > [What is the difference between Bagging and Boosting? by QuantDare](https://quantdare.com/what-is-the-difference-between-bagging-and-boosting/)
 
+## Preparación de datos para implementar métodos de ensamble
+
+Utilizaremos un meta estimador que tiene Scikit Learn llamado **Bagging Classifier**. Al ser un meta estimador podemos adaptarlo a las diferentes familias de estimadores y Scikit Learn lo configurara de forma automática para que se convierta en un método de ensamble.
+
+Utilizaremos el dataset de afecciones cardiacas. Teniamos diferentes datos de pacientes, donde la meta finalmente era clasificarlos en si el paciente tenia o no una afección cardiaca.
+
+## Implementación de Bagging
+
+[Script implementando Bagging](bagging.py)
+
+- Implementaremos el clasificador `KNeighborsClassifier()` y veremos su accuracy.
+- Tambien implementaremos Bagging con una serie de algoritmos de clasificación en un diccionario y veremos su accuracy.
+
+```py
+# Accuracy with only KNeighborsClassifier
+knn_class = KNeighborsClassifier().fit(X_train, y_train)
+knn_pred = knn_class.predict(X_test)
+
+# Accuracy Bagging...
+classifier = {
+    'KNeighbors': KNeighborsClassifier(),
+    'LogisticRegression' : LogisticRegression(),
+    'LinearSCV': LinearSVC(),
+    'SVC': SVC(),
+    'SGDC': SGDClassifier(),
+    'DecisionTree': DecisionTreeClassifier(),
+    'RandomTreeForest' : RandomForestClassifier(random_state=0)
+}
+
+# for loop...
+```
+
+Los accuracy que obtuvimos en pantalla fueron:
+
+```shell
+Accuracy with only KNeighborsClassifier: 0.724025974025974
+Accuracy Bagging with KNeighbors: 0.7727272727272727
+
+Accuracy Bagging with LogisticRegression: 0.8474025974025974
+Accuracy Bagging with LinearSCV: 0.8376623376623377
+Accuracy Bagging with SVC: 0.7077922077922078
+Accuracy Bagging with SGDC: 0.7402597402597403
+
+Accuracy Bagging with DecisionTree: 0.9675324675324676
+Accuracy Bagging with RandomTreeForest: 0.9805194805194806
+
+```
+
+El accuracy sin Bagging es menor que utilizando Bagging para el algoritmo de clasificación `KNeighborsClassifier`. Con esto concluimos en esta parte que implementando Bagging podemos mejorar el accuracy de nuestro modelo configurandolo de forma correcta.
+
+La otra conclusión que podemos obtener luego de haber entrenado otros modelos de clasificación utilizando Bagging es que los accuracy son variados. Los de mejor performance son los algoritmos basados en `Tree`, `DecisionTree` y `RandomTreeForest`, donde el mejor fue el segundo.
 
 # 6. Clustering
 
