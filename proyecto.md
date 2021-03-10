@@ -42,6 +42,8 @@
   - [Implementación de Bagging](#implementación-de-bagging)
   - [Implementación de Boosting](#implementación-de-boosting)
 - [6. Clustering](#6-clustering)
+  - [Estrategias de Clustering](#estrategias-de-clustering)
+    - [Casos de aplicación de clustering](#casos-de-aplicación-de-clustering)
 - [7. Optimización paramétrica](#7-optimización-paramétrica)
 - [8. Salida a producción](#8-salida-a-producción)
 
@@ -707,7 +709,28 @@ GradientBoostingClassifier accuracy : 0.9642857142857143
 Luego analizamos un rango de estimadores y graficamos sus resultaados para observar cual seria un numero adecuado de estimadores.
 
 ![](https://imgur.com/C6e10Sn.png)
+
 # 6. Clustering
+
+## Estrategias de Clustering
+
+Los [algoritmos de clustering](https://es.wikipedia.org/wiki/An%C3%A1lisis_de_grupos) son las estrategias que podemos usar para agrupar los datos de tal manera que todos los datos pertenecientes a un grupo sean lo más similares que sea posible entre sí, y lo más diferentes a los de otros grupos.
+
+Cada circulo corresponde a un elemento, sus coordenadas representan sus características, los colores son el resultado del agrupamiento, que en este caso identificó 3 grupos.
+
+![](https://imgur.com/X251zh8.png)
+
+### Casos de aplicación de clustering
+
+1. No conocemos con anterioridad las etiquetas de nuestros datos (Aprendizaje no supervisado).
+2. Queremos descubrir patrones ocultos a simple vista.
+3. Queremos identificar datos atípicos.
+
+- Casos de uso de aplicación:
+  - **Cuando sabemos cuántos grupos “k” queremos en nuestro resultado**.
+    - Si es el caso, por ejemplo en una empresa de marketing y sabemos que los segmentos de clientes es bajo, medio alto, en este caso es recomendable usar k-means, o bien, spectral clustering.
+  - **Cuando queremos que el algoritmo descubra la cantidad de grupos “k” óptima según los datos que tenemos**.
+    - Por otro lado si no conocemos cuantos grupos o cuantas categories tenemos y solo queremos experimenter, la solución puede ser Meanshift, clustering jerárquico o DBScan.
 
 # 7. Optimización paramétrica
 
