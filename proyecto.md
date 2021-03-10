@@ -40,6 +40,7 @@
     - [Boosting](#boosting)
   - [Preparación de datos para implementar métodos de ensamble](#preparación-de-datos-para-implementar-métodos-de-ensamble)
   - [Implementación de Bagging](#implementación-de-bagging)
+  - [Implementación de Boosting](#implementación-de-boosting)
 - [6. Clustering](#6-clustering)
 - [7. Optimización paramétrica](#7-optimización-paramétrica)
 - [8. Salida a producción](#8-salida-a-producción)
@@ -691,6 +692,21 @@ El accuracy sin Bagging es menor que utilizando Bagging para el algoritmo de cla
 
 La otra conclusión que podemos obtener luego de haber entrenado otros modelos de clasificación utilizando Bagging es que los accuracy son variados. Los de mejor performance son los algoritmos basados en `Tree`, `DecisionTree` y `RandomTreeForest`, donde el mejor fue el segundo.
 
+## Implementación de Boosting
+
+[Script implementando Bagging](boosting.py)
+
+Implementaremos [GradientBoostingClassifier](https://en.wikipedia.org/wiki/Gradient_boosting) un algoritmo boosting basado en arboles de decisión. Podemos encontrar mas información en la [documentación oficial de Scikit Learn](https://scikit-learn.org/stable/modules/ensemble.html#gradient-tree-boosting)
+
+Hicimos la implementación con 50 estimadores y obtuvimos lo siguiente:
+
+```shell
+GradientBoostingClassifier accuracy : 0.9642857142857143
+```
+
+Luego analizamos un rango de estimadores y graficamos sus resultaados para observar cual seria un numero adecuado de estimadores.
+
+![](https://imgur.com/C6e10Sn.png)
 # 6. Clustering
 
 # 7. Optimización paramétrica
