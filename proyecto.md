@@ -35,6 +35,9 @@
   - [Preparación de datos para la regresión robusta](#preparación-de-datos-para-la-regresión-robusta)
   - [Implementación regresión robusta](#implementación-regresión-robusta)
 - [5. Métodos de ensamble aplicados a clasificación](#5-métodos-de-ensamble-aplicados-a-clasificación)
+  - [¿Qué son los métodos de ensamble?](#qué-son-los-métodos-de-ensamble)
+    - [Bagging](#bagging)
+    - [Boosting](#boosting)
 - [6. Clustering](#6-clustering)
 - [7. Optimización paramétrica](#7-optimización-paramétrica)
 - [8. Salida a producción](#8-salida-a-producción)
@@ -582,6 +585,58 @@ Obtenemos lo siguiente:
 > [Robust Regression for Machine Learning in Python - More Info - Excellent article](https://machinelearningmastery.com/robust-regression-for-machine-learning-in-python/)
 
 # 5. Métodos de ensamble aplicados a clasificación
+
+## ¿Qué son los métodos de ensamble?
+
+Sirven cuando queremos probar diferentes estimadores y llegar a una unica conclusión a través de un consenso.
+
+1. Combinar difentes métodos de ML con diferentes configuraciones y aplicar un método para lograr un consenso.
+2. La diversidad es una muy buena opción. Probar diferentes modelos con diferentes parámetros nos permite abrir mas el abanico de soluciones a un mismo problema.
+3. Los métodos de ensable se han destacado por ganar competencias en ML.
+
+Hay dos estrategias. Bagging y Boosting
+
+### Bagging
+
+Significa **B**ootstrap **Agg**regation
+
+¿Que tal si en lugar de depender de la opinión de un solo "experto" consultamos la opinión de varios expertos en paralelo e intentamos lograr un consenso?
+> Bueno, **asi trabaja Bagging**
+
+![bagging1](https://imgur.com/ZAjuwVt.png)
+![bagging2](https://imgur.com/0wpRSAX.png)
+![bagging3](https://imgur.com/PDngmWg.png)
+
+Modelos de ensable basados en Bagging
+
+1. Random Forest
+2. Volting Classifiers/Regressors
+3. Se puede aplicar sobre cualquier familia de modelo de ML.
+
+### Boosting
+
+Boosting significa impulsar/propulsar.
+
+¿Y si probamos otro enfoque? Le pedimos a un expero su creterio sobre un problema. Medimos su posible error, y luego usando ese error calculado le pedimos a otro experto su juicio sobre el  mismo problema.
+
+> Bueno, **asi trabaja Boosting**
+
+![boosting](https://imgur.com/TRW92ol.png)
+
+Modelos de ensable basados en Bagging
+
+1. AdaBoost
+2. Gradient Tree Boosting
+3. XGBoost
+
+Resumen con imágenes:
+
+![bagg-boost1](https://imgur.com/xaC0Ptk.png)
+![bagg-boost2](https://imgur.com/kFyPySh.png)
+![bagg-boost3](https://imgur.com/HQKlOcx.png)
+
+> [What is the difference between Bagging and Boosting? by QuantDare](https://quantdare.com/what-is-the-difference-between-bagging-and-boosting/)
+
 
 # 6. Clustering
 
