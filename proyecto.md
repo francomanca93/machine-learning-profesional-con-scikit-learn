@@ -45,6 +45,7 @@
   - [Estrategias de Clustering](#estrategias-de-clustering)
     - [Casos de aplicación de clustering](#casos-de-aplicación-de-clustering)
   - [Implementación de Batch K-Means](#implementación-de-batch-k-means)
+  - [Implementactión de Mean-Shift](#implementactión-de-mean-shift)
 - [7. Optimización paramétrica](#7-optimización-paramétrica)
 - [8. Salida a producción](#8-salida-a-producción)
 
@@ -756,6 +757,20 @@ En el sigueinte scatter se graficarón las siguientes columnas del datasets y se
 - **winpercent**:​ Porcentaje de victorias de acuerdo a 269.000 emparejamientos al azar.
 
 > Se observan los 4 diferentes colores, ya que se eligieron 4 clusters. Se puede observar una clara clusterizacion cuando se compara respecto a winpercent las variables pricepercent, sugarpercent.
+
+## Implementactión de Mean-Shift
+
+[Implementacion de Mean-Shift](meanshift.py)
+
+Puede suceder que lo que necesitemos sea simplemente dejar que el algoritmo decida cuantas categorías requiere. Esto lo podremos hacer con el algoritmo [Mean-Shift](https://scikit-learn.org/stable/modules/clustering.html#mean-shift). El algoritmo de la clustering tiene como objetivo descubrir manchas en una densidad uniforme de muestras. O sea, diferenciar y clusterizar. Documentación oficial en [sklearn.cluster.MeanShift](https://scikit-learn.org/stable/modules/generated/sklearn.cluster.MeanShift.html).
+
+![meanshift](https://imgur.com/hNuP2VY.png)
+
+El algoritmo nos devolvio 3 clusters, porque le pareció que esa era la cantidad correcta teniendo en cuenta como se distrubuye la densidad de nuestros datos. Podemos ver eso mismo en el gráfico anterior.
+
+> Se observan los 3 diferentes colores, clusters generados automaticamente por el algoritmo MeanShift. Se puede observar una clara clusterizacion cuando se compara respecto a winpercent las variables pricepercent, sugarpercent.
+
+> **NOTA**: En la [documentación (en Scalability)](https://scikit-learn.org/stable/modules/generated/sklearn.cluster.MeanShift.html) se advierte que el algoritmo tiene una complejidad algorítmica que escala a **O(T*n^2)** a medida que el número de registros aumenta.
 
 # 7. Optimización paramétrica
 
