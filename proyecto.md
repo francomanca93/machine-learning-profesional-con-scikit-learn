@@ -44,6 +44,7 @@
 - [6. Clustering](#6-clustering)
   - [Estrategias de Clustering](#estrategias-de-clustering)
     - [Casos de aplicación de clustering](#casos-de-aplicación-de-clustering)
+  - [Implementación de Batch K-Means](#implementación-de-batch-k-means)
 - [7. Optimización paramétrica](#7-optimización-paramétrica)
 - [8. Salida a producción](#8-salida-a-producción)
 
@@ -731,6 +732,30 @@ Cada circulo corresponde a un elemento, sus coordenadas representan sus caracter
     - Si es el caso, por ejemplo en una empresa de marketing y sabemos que los segmentos de clientes es bajo, medio alto, en este caso es recomendable usar k-means, o bien, spectral clustering.
   - **Cuando queremos que el algoritmo descubra la cantidad de grupos “k” óptima según los datos que tenemos**.
     - Por otro lado si no conocemos cuantos grupos o cuantas categories tenemos y solo queremos experimenter, la solución puede ser Meanshift, clustering jerárquico o DBScan.
+
+## Implementación de Batch K-Means
+
+[Implementacion del algoritmo](k_means.py)
+
+Asumiremos que sabemos los grupos que implementariemos en el resultado final
+
+Utilizaremos el dataset de [candi](datasets/candy.csv). Este nos dice las caracterisicas de diferentes caramelos. Podemos conocer mas el dataset en el su [readme](datasets/readme-dataset-candy.pdf).
+
+Usamos la implementación [Mini Batch K-Means](https://scikit-learn.org/stable/modules/clustering.html#mini-batch-kmeans). Esta es una variante del algoritmo K-Means que usa mini batches (lotes) que reduce el tiempo de computo. La unica diferencia es que la calidad de los resultados es reducida.
+
+Documentation: [sklearn.cluster.MiniBatchKMeans](https://scikit-learn.org/stable/modules/generated/sklearn.cluster.MiniBatchKMeans.html)
+
+No implementamos el metodo del codo, al conocerce el datasets utilizamos la cantidad de cluster adecuada, aunque el metodo de seleccion de estos no fue el adecuado, ya que debe usarse el metodo de codo u otro.
+
+![kmeans_paitplot](https://imgur.com/K9DqUE8.png)
+
+En el sigueinte scatter se graficarón las siguientes columnas del datasets y se coloreo bajo una columna nueva creada gracias a la clusterizacion que hizo el algoritmos K Means.
+
+- **sugarpercent**: ​ El percentil de azúcar en el que recae dentro del mismo dataset.
+- **pricepercent**: El percentil de precio por unidad dentro del que se encuentra respecto al dataset.
+- **winpercent**:​ Porcentaje de victorias de acuerdo a 269.000 emparejamientos al azar.
+
+> Se observan los 4 diferentes colores, ya que se eligieron 4 clusters. Se puede observar una clara clusterizacion cuando se compara respecto a winpercent las variables pricepercent, sugarpercent.
 
 # 7. Optimización paramétrica
 
