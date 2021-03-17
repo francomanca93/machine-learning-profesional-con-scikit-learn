@@ -52,6 +52,7 @@
       - [Hold-Out](#hold-out)
       - [K-Folds](#k-folds)
       - [LOOCV](#loocv)
+  - [Implementación de K-Folds Cross Validation](#implementación-de-k-folds-cross-validation)
 - [8. Salida a producción](#8-salida-a-producción)
 
 # 1. Aprender los conceptos clave
@@ -843,5 +844,42 @@ Validación cruzada LOOCV, Leave One Out Cross Validation. Este es el método m�
 - Se tiene gran poder de computo
 - Se cuetan con pocos datos para poder dividir por Train/Test
 - Cuando se quiere probar todos los casos posibles (para personas con TOC)
+
+## Implementación de K-Folds Cross Validation
+
+[Cross-validation: evaluating estimator performance](https://scikit-learn.org/stable/modules/cross_validation.html#k-fold)
+
+**[sklearn.model_selection.cross_val_score](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.cross_val_score.html#sklearn.model_selection.cross_val_score)**
+
+Se hizo una implementacion básica de Cross validation para calcular un score.
+
+- Determinamos en cuantas partes queremos dividir nuestro dataset.
+- De cada uno obtenemos una lista de scores, estos son errores medios cuadraticos de cada split.
+- Sacamos la media de esos errores
+- Obtenemos el valor final real sacando su valor absoluto.
+
+```shell
+****************************************************************
+---- IMPLEMENTACION BÁSICA ----
+****************************************************************
+Los tres MSE fueron:  [-0.84508789 -0.15576388 -0.74578906]
+================================
+-0.5822136106357311
+================================
+El MSE promedio fue:  0.5822136106357311
+```
+
+**[sklearn.model_selection.KFold](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.KFold.html?highlight=kfold#sklearn.model_selection.KFold)**
+
+Se hizo una implementacion mas sofisticada de K Fold Cross validation para calcular separar los datos en sus respectivos dataset y poder entrenar a nuestro modelo manualmente.
+
+```shell
+****************************************************************
+---- IMPLEMENTACION DETALLADA ----
+****************************************************************
+Los tres MSE fueron:  [0.016092903866001332, 0.01771079365873104, 0.004653134441603091]
+El MSE promedio fue:  0.012818943988778489
+```
+
 
 # 8. Salida a producción
