@@ -65,6 +65,11 @@
   - [Revisión de nuestra arquitectura de código](#revisión-de-nuestra-arquitectura-de-código)
   - [Importar y exportar modelos con Sklearn](#importar-y-exportar-modelos-con-sklearn)
   - [Creación de una API con Flask para el modelo](#creación-de-una-api-con-flask-para-el-modelo)
+- [Conclusiones](#conclusiones)
+  - [Manejo de features](#manejo-de-features)
+  - [Algoritmos de ML](#algoritmos-de-ml)
+  - [Validacion y optimizacion de hiperparametros](#validacion-y-optimizacion-de-hiperparametros)
+  - [Como exponer un modelo en produccion](#como-exponer-un-modelo-en-produccion)
 
 # 1. Aprender los conceptos clave
 
@@ -1098,3 +1103,50 @@ Ya el JSON tendríamos que tratarlo, si estamos desarrollando una aplicación m�
 Con esto ya tenemos las predicciones y tenemos un sistema que se conecta a nuestro modelo y nos trae los resultados de una manera extensible, modular, fácil de utilizar y que podemos convertir en la solución que estamos buscando.
 
 Así damos por finalizado la construcción de la arquitectura para salir a producción de nuestro modelo Inteligencia artificial.
+
+--------------------------
+# Conclusiones
+
+--------------------------
+
+## Manejo de features
+
+[Optimización de features](#3-optimización-de-features)
+
+En el curso aprendimos cómo tratar con nuestro features y como seleccionarlos para extraer la información más importante. Esto es optimización de features a través de PCA, IPCA, KPCA. Tambienn Regularización e implementación de Lasso y Ridge
+
+--------------------------
+
+## Algoritmos de ML
+
+
+
+También como construir algunos modelos de Machine Learning aún para casos bastante complejos como los que vimos.
+
+Nos adentramos en las tres areas de Machine Learning mas importantes como son:
+
+[Regresiones robustas](#4-regresiones-robustas): Estudiamos sobre Regresiones robustas y como implementarlas para evitar valores atípicos.
+
+[Métodos de ensamble aplicados a clasificación](#5-métodos-de-ensamble-aplicados-a-clasificación): Estudiamos métodos de ensamble aplicados a clasificación, preparamos datos e implementamos Bagging y Boosting.
+
+[Clustering](#6-clustering): Estudiamos estrategias de Clustering y como implementar Batch K-Means y Mean-Shift
+
+--------------------------
+
+## Validacion y optimizacion de hiperparametros
+
+[Optimización paramétrica](#7-optimización-paramétrica)
+
+Se le dedico un modulo completo a como validar nuestros modelos. Conocimos en profundiad los tipos de validación (Hold-Out, K-Folds, LOOCV). Esto se lo conoce como Cross Validation.
+
+Luego en el mismo modulo conocimos y estudiamos sobre Optimización paramétrica o Hyperparameter Optimization. Implementamos GridSearchCV y RandomizedSearchCV
+
+--------------------------
+
+## Como exponer un modelo en produccion
+
+[Salida a producción](#8-salida-a-producción)
+
+Finalmente cómo sacarlos a producción a través de una APIrest
+
+Formamos una arquitectura de archivos y carpetas para nuestro código, importar y exportar modelos con Sklearn y creamos una APIrest con Flask para el modelo.
