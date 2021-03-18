@@ -59,6 +59,8 @@
     - [Optimizacion por búsqueda aleatorizada | RandomizedSearchCV](#optimizacion-por-búsqueda-aleatorizada--randomizedsearchcv)
     - [GridSearchCV vs RandomizedSearchCV](#gridsearchcv-vs-randomizedsearchcv)
   - [Implementación de Randomized](#implementación-de-randomized)
+  - [BONUS: Auto Machine Learning](#bonus-auto-machine-learning)
+    - [auto-sklearn](#auto-sklearn)
 - [8. Salida a producción](#8-salida-a-producción)
 
 # 1. Aprender los conceptos clave
@@ -1009,5 +1011,29 @@ Name: 0, dtype: float64
 ```
 
 > Podemos ver los parámetros seleccionados por nuestro optimizador en 'Mejores parámetros'. Con esos parámetros seleccionados hemos predicho un valor y obtuvimos lo que se ve en 'Pruebas', valores muy acertados.
+
+## BONUS: Auto Machine Learning
+
+Scikit-learn nos permite semi-automatizar la optimización de nuestros modelos con GridSearchCV y RandomizedSearchCV, ¿Cuál es el límite de esta automatización? Haciendonos esta pregunta nace un nuevo concepto Automated Machine Learning.
+
+> **Automated Machine Learning (AutoML)**, es un concepto que en general pretende la completa automatización de todo el proceso de Machine Learning, desde la extracción de los datos hasta su publicación final de cara a los usuarios.
+
+Sin embargo, este ideal aún está en desarrollo en la mayoría de las etapas del proceso de Machine Learning y aún se depende bastante de la intervención humana.
+
+Podemos encontrar más información leyendo el siguiente enlace: [Qué es Automated Machine Learning: la próxima generación de inteligencia artificial](https://itmastersmag.com/noticias-analisis/que-es-automated-machine-learning-la-proxima-generacion-de-inteligencia-artificial/)
+
+Existe una implementación de este concepto utilizando Scikit Learn llamado auto-sklearn. Esto nos ayudará a llevar un paso más lejos nuestro proceso de selección y optimización de modelos de machine learning. Dado que automáticamente prueba diferentes modelos predefinidos y configuraciones de parámetros comunes hasta encontrar la que más se ajuste según los datos que le pasemos como entrada. Con esta herramienta podrás entrenar modelos tanto de clasificación como de regresión por igual.
+
+[Lista de los clasificadores disponibles](https://github.com/automl/auto-sklearn/tree/master/autosklearn/pipeline/components/classification)
+
+[Lista de los regresores disponibles](https://github.com/automl/auto-sklearn/tree/master/autosklearn/pipeline/components/regression)
+
+Se puede añadir modelos personalizados al proceso siguiendo los pasos descritos en la documentación.
+
+### auto-sklearn
+
+Esta herramienta es una librería basada en los algoritmos de scikit-learn, aunque hay que tener presente que es una librería externa y se debe instalar siempre por aparte. En todo caso al ser una librería de Python se puede combinar sin ningún problema con el resto de nuestro código desarrollado para scikit-learn, incluso permitiendo la exportación de modelos ya entrenados para su posterior uso.
+
+[Documentación de auto-sklearn](https://automl.github.io/auto-sklearn/master/index.html)
 
 # 8. Salida a producción
