@@ -63,6 +63,7 @@
     - [auto-sklearn](#auto-sklearn)
 - [8. Salida a producción](#8-salida-a-producción)
   - [Revisión de nuestra arquitectura de código](#revisión-de-nuestra-arquitectura-de-código)
+  - [Importar y exportar modelos con Sklearn](#importar-y-exportar-modelos-con-sklearn)
 
 # 1. Aprender los conceptos clave
 
@@ -1058,3 +1059,18 @@ Cada clase será un archivo que tenga su propia responsabilidad y se encargue es
 - [load.py](project/load.py): Archivo que se encarga de cargar los datos desde in o una DB
 - [utils.py](project/utils.py): Todos los metodos que se reutilizaran una y otra vez.
 - [models.py](project/models.py): Irá toda la parte de ML como tal.
+
+## Importar y exportar modelos con Sklearn
+
+Se creo la clase Models que contiene:
+
+[models.py](project/models.py)
+
+- Metodo grid_training(): Metodo para seleccionar al mejor modelo con el mejor score. Trabaja sobre los atributos, que son diccionarios de modelos y sus respectivos rangos y opciones de parámetros. Se utiliza el optimizador Grid y se selecciona finalmente el mejor modelo y el que mas score entrega de estos.
+- Atributos:
+  - reg: Atributo que contiene a los regresores en diccionarios. Estos son los modelos que se utilizarán
+  - params: Atributo que contiene a los parámetros de cada modelo en diccionario.
+
+[utils.py](project/utils.py)
+
+Funcion para exportar a nuestros modelos en [pickle](https://www.datacamp.com/community/tutorials/pickle-python-tutorial).

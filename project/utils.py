@@ -1,4 +1,5 @@
 import pandas as pd
+import joblib
 
 class Utils:
     
@@ -10,8 +11,9 @@ class Utils:
     
     def feature_target(self, dataset, drop_cols, y):
         X = dataset.drop(drop_cols, axis=1)
-        y = dataset(y)
+        y = dataset[y]
         return X, y
 
     def model_export(self, clf, score):
-        pass
+        print('Score: ', score)
+        joblib.dump(clf, './project/models/best_model.pkl')
