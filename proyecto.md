@@ -64,6 +64,7 @@
 - [8. Salida a producción](#8-salida-a-producción)
   - [Revisión de nuestra arquitectura de código](#revisión-de-nuestra-arquitectura-de-código)
   - [Importar y exportar modelos con Sklearn](#importar-y-exportar-modelos-con-sklearn)
+  - [Creación de una API con Flask para el modelo](#creación-de-una-api-con-flask-para-el-modelo)
 
 # 1. Aprender los conceptos clave
 
@@ -1074,3 +1075,26 @@ Se creo la clase Models que contiene:
 [utils.py](project/utils.py)
 
 Funcion para exportar a nuestros modelos en [pickle](https://www.datacamp.com/community/tutorials/pickle-python-tutorial).
+
+## Creación de una API con Flask para el modelo
+
+- Instalamos flask
+- Eliminamos load.py, ya que no lo utilizaremos finalmente
+- Creamos el archivo [server.py](project/server.py) para crear un servidor local para nuestra API.
+  - En este creamos la funcion predict(), que será la expuesta en nuestro servidor con el metodo GET, en la direccion 8080/predict y que muestra la prediccion hecha. La prediccion se hace con datos de pruebas y con nuestro modelo que exportamos al archivo [best_model.pkl](project/models/best_model.pkl)
+
+Tenemos entonces un JSON que tiene una llave que se llama predicción y el valor de la predicción que nos generó nuestro modelo según los datos que le pasamos de configuración.
+
+```
+http://127.0.0.1:8080/predict
+```
+
+![json-servidor](https://imgur.com/lwhSk7b.png)
+
+Así podemos entonces ver un ejemplo de cómo podríamos salir a producción.
+
+Ya el JSON tendríamos que tratarlo, si estamos desarrollando una aplicación móvil o una plataforma web, podríamos trabajarlo con JavaScript o desde Android sin importar la naturaleza lo que estemos haciendo.
+
+Con esto ya tenemos las predicciones y tenemos un sistema que se conecta a nuestro modelo y nos trae los resultados de una manera extensible, modular, fácil de utilizar y que podemos convertir en la solución que estamos buscando.
+
+Así damos por finalizado la construcción de la arquitectura para salir a producción de nuestro modelo Inteligencia artificial.
