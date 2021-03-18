@@ -62,6 +62,7 @@
   - [BONUS: Auto Machine Learning](#bonus-auto-machine-learning)
     - [auto-sklearn](#auto-sklearn)
 - [8. Salida a producción](#8-salida-a-producción)
+  - [Revisión de nuestra arquitectura de código](#revisión-de-nuestra-arquitectura-de-código)
 
 # 1. Aprender los conceptos clave
 
@@ -1037,3 +1038,23 @@ Esta herramienta es una librería basada en los algoritmos de scikit-learn, aunq
 [Documentación de auto-sklearn](https://automl.github.io/auto-sklearn/master/index.html)
 
 # 8. Salida a producción
+
+## Revisión de nuestra arquitectura de código
+
+Ahora vamos a convertir los scripts que tenemos en un código que sea modular y extensible con facilidad para que nuestra arquitectura pueda salir a producción de una manera exitosa.
+
+Una estructura de carpetas que sea organizada para poder gestionar todo lo que vas a necesitar en cualquier proceso de Machine Learning.
+
+Carpetas:
+
+- [in](project/in): Carpeta que contendrá archivos de entrada, datos que alimentarán a nuestros modelos.
+- [out](project/out): Carpeta que contendrá el resultado de la exportacion de nuestros modelos, visualizaciones, datos en excel o csv, etc.
+- [models](project/models): Carpeta que contedrá a los modelos.
+
+Archivos:
+Cada clase será un archivo que tenga su propia responsabilidad y se encargue específicamente de una tareas concreta.
+
+- [main.py](project/main.py): Metodo principal de ejecucion. Ejecutará todo el flujo de datos. Se encargaría de controlar el flujo de todo el código de principio a fin.
+- [load.py](project/load.py): Archivo que se encarga de cargar los datos desde in o una DB
+- [utils.py](project/utils.py): Todos los metodos que se reutilizaran una y otra vez.
+- [models.py](project/models.py): Irá toda la parte de ML como tal.
