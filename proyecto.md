@@ -58,6 +58,7 @@
     - [Optimizacion por grilla de parámetros | GridSearchCV](#optimizacion-por-grilla-de-parámetros--gridsearchcv)
     - [Optimizacion por búsqueda aleatorizada | RandomizedSearchCV](#optimizacion-por-búsqueda-aleatorizada--randomizedsearchcv)
     - [GridSearchCV vs RandomizedSearchCV](#gridsearchcv-vs-randomizedsearchcv)
+  - [Implementación de Randomized](#implementación-de-randomized)
 - [8. Salida a producción](#8-salida-a-producción)
 
 # 1. Aprender los conceptos clave
@@ -948,5 +949,65 @@ Ejemplo:
   - Haya poco poder de procesamiento.
 
 ![GridSearch-vs-RandomizedSearch](https://imgur.com/UWdrx7j.png)
+
+## Implementación de Randomized
+
+[Implementación de Randomized](randomized.py)
+
+Se implementó el optimizador RandomizedSearchCV utilizando RandomForestRegressor. El diccionario con los parámetros fue:
+
+```py
+
+parameters = {
+        'n_estimators': range(4, 16), # rango de arboles que compondran el bosque
+        'criterion': ['mse', 'mae'], # lista de criterio de 
+        'max_depth': range(2, 11) # rango de profundidad de los arboles
+    }
+
+```
+
+Luego pusimos a trabajar nuestro optimizador:
+
+```py
+
+    # n_iter=10, son 10 iteracion del optimizador. Toma 10 combinaciones al azar del diccionario
+    # cv = 3, parte en 3 parte el set de datos que le pasemos, para hacer Cross validation
+    rand_est = RandomizedSearchCV(reg, parameters, 
+                                  n_iter=10, 
+                                  cv=3, 
+                                  scoring='neg_mean_absolute_error',
+                                  ).fit(data, target)
+
+```
+
+Los valores obtenidos fueron:
+
+```shell
+
+================================================================
+Mejores estimadores
+----------------------------------------------------------------
+RandomForestRegressor(bootstrap=True, ccp_alpha=0.0, criterion='mse',
+                      max_depth=10, max_features='auto', max_leaf_nodes=None,
+                      max_samples=None, min_impurity_decrease=0.0,
+                      min_impurity_split=None, min_samples_leaf=1,
+                      min_samples_split=2, min_weight_fraction_leaf=0.0,
+                      n_estimators=4, n_jobs=None, oob_score=False,
+                      random_state=None, verbose=0, warm_start=False)
+================================================================
+Mejores parametros
+----------------------------------------------------------------
+{'n_estimators': 4, 'max_depth': 10, 'criterion': 'mse'}
+================================================================
+Pruebas
+----------------------------------------------------------------
+Predict: 7.52625012375
+Real:    7.537
+Name: 0, dtype: float64
+================================================================
+
+```
+
+> Podemos ver los parámetros seleccionados por nuestro optimizador en 'Mejores parámetros'. Con esos parámetros seleccionados hemos predicho un valor y obtuvimos lo que se ve en 'Pruebas', valores muy acertados.
 
 # 8. Salida a producción
